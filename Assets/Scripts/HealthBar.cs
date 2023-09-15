@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class HealthBar : MonoBehaviour
 {
@@ -8,18 +9,31 @@ public class HealthBar : MonoBehaviour
     [SerializeField] private ChangeValue _buttonHeal;
     [SerializeField] private Text _text;
 
+    private Coroutine _changeHealth;
+    private float _recoveryRate = 10f;
+
     public void ShowHealth(float value)
     {
         _text.text = _slider.value.ToString();
     }
 
+    private IEnumerator ChangeHealthBar(float target)
+    {
+        while (_slider.value != target)
+        {
+            _slider.value = Mathf.MoveTowards(_slider.value, target, _recoveryRate * Time.deltaTime);
+
+            yield return null;
+        }
+    }
+
     public void TakeDamage()
     {
-        _slider.value = Mathf.MoveTowards(_slider.value, _slider.value - _buttonDamage.Damage, _buttonDamage.Damage);
+        _changeHealth = StartCoroutine(ChangeHealthBar(_slider.value - _buttonDamage.Damage));
     }
 
     public void TakeHeal()
     {
-        _slider.value = Mathf.MoveTowards(_slider.value, _slider.value + _buttonHeal.Heal, _buttonHeal.Heal);
+        _changeHealth = StartCoroutine(ChangeHealthBar(_slider.value + _buttonDamage.Heal));
     }
 }
