@@ -6,9 +6,15 @@ public class SmoothChangeHealth : MonoBehaviour
 {
     [SerializeField] Slider _slider;
 
+    private Coroutine _changeHealth;
     private float _recoveryRate = 10f;
 
-    public IEnumerator ChangeHealthBar(float target)
+    public void StartCoroutine(float target)
+    {
+        _changeHealth = StartCoroutine(ChangeHealthBar(_slider.value + target));
+    }
+
+    private IEnumerator ChangeHealthBar(float target)
     {
         while (_slider.value != target)
         {
