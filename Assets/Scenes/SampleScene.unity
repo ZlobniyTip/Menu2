@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 436679712}
   - component: {fileID: 436679711}
   - component: {fileID: 436679710}
+  - component: {fileID: 436679714}
   m_Layer: 5
   m_Name: Damage
   m_TagString: Untagged
@@ -254,6 +255,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17dc15885da1f948ab667a6b443527d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _slider: {fileID: 912479368}
+  _smoothChangeHealth:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 436679714}
+        m_TargetAssemblyTypeName: SmoothChangeHealth, Assembly-CSharp
+        m_MethodName: StartSmoothValueChange
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: -10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &436679711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,8 +315,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 912479367}
-        m_TargetAssemblyTypeName: HealthBar, Assembly-CSharp
+      - m_Target: {fileID: 436679710}
+        m_TargetAssemblyTypeName: ValueHpChange, Assembly-CSharp
         m_MethodName: TakeDamage
         m_Mode: 1
         m_Arguments:
@@ -348,6 +365,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 436679708}
   m_CullTransparentMesh: 1
+--- !u!114 &436679714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436679708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bbc019e647b7b94eaf41ac069a39f56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slider: {fileID: 912479368}
 --- !u!1 &488976889
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,10 +862,10 @@ RectTransform:
   m_Father: {fileID: 1927284833}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 250}
-  m_SizeDelta: {x: 160, y: 20}
+  m_AnchorMin: {x: 0.35847515, y: 0.83400005}
+  m_AnchorMax: {x: 0.64047515, y: 0.957}
+  m_AnchoredPosition: {x: 0.5, y: -1}
+  m_SizeDelta: {x: -43, y: -58}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &912479367
 MonoBehaviour:
@@ -850,8 +880,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slider: {fileID: 912479368}
-  _buttonDamage: {fileID: 436679710}
-  _buttonHeal: {fileID: 1786121841}
   _text: {fileID: 1818711966}
 --- !u!114 &912479368
 MonoBehaviour:
@@ -1070,6 +1098,7 @@ GameObject:
   - component: {fileID: 1786121843}
   - component: {fileID: 1786121842}
   - component: {fileID: 1786121841}
+  - component: {fileID: 1786121845}
   m_Layer: 5
   m_Name: Heal
   m_TagString: Untagged
@@ -1094,7 +1123,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1387206, y: 0.555}
   m_AnchorMax: {x: 0.39156988, y: 0.60257727}
-  m_AnchoredPosition: {x: -0.5000305, y: 0}
+  m_AnchoredPosition: {x: -0.50006104, y: 0}
   m_SizeDelta: {x: -1, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1786121841
@@ -1109,6 +1138,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17dc15885da1f948ab667a6b443527d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _slider: {fileID: 912479368}
+  _smoothChangeHealth:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1786121845}
+        m_TargetAssemblyTypeName: SmoothChangeHealth, Assembly-CSharp
+        m_MethodName: StartSmoothValueChange
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1786121842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1153,15 +1198,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 912479367}
-        m_TargetAssemblyTypeName: HealthBar, Assembly-CSharp
+      - m_Target: {fileID: 1786121841}
+        m_TargetAssemblyTypeName: ValueHpChange, Assembly-CSharp
         m_MethodName: TakeHeal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
+          m_FloatArgument: 10
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -1203,6 +1248,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1786121839}
   m_CullTransparentMesh: 1
+--- !u!114 &1786121845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786121839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bbc019e647b7b94eaf41ac069a39f56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slider: {fileID: 912479368}
 --- !u!1 &1818711964
 GameObject:
   m_ObjectHideFlags: 0

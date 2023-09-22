@@ -9,7 +9,7 @@ public class SmoothChangeHealth : MonoBehaviour
     private Coroutine _changeHealth;
     private float _recoveryRate = 10f;
 
-    public void StartCoroutine(float target)
+    public void StartSmoothValueChange(float target)
     {
         _changeHealth = StartCoroutine(ChangeHealthBar(_slider.value + target));
     }
