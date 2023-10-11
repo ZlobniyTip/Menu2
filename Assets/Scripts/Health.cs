@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class ValueHpChange : MonoBehaviour
+public class Health : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
     [SerializeField] private UnityEvent _smoothChangeHealth;

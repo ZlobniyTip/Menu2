@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SmoothChangeHealth : MonoBehaviour
+public class HealthBar : MonoBehaviour
 {
     [SerializeField] Slider _slider;
 
